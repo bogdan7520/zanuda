@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.environ['DJANGO_DEBUG']
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['psv1.herokuapp.com']
 
 
 # Application definition
