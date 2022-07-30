@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <title>{% block title_block %}{% endblock %}</title>
+</head>
+<body>
+
+{% if user.is_staff %}
+<a class="hrefonadmin" href="/admin">Панель администратора</a>
+{% endif %}
+<form class="form_search_class" action="{% url 'search_results' %}" method="get">
+    <input type="text" name="q" class="search_input_class" placeholder="Ищите здесь...">
+    <input type="submit" class="button_seach_class" value="">
+    <input type="submit" class="button_seach_class_2" value="">
+</form>
+
+<nav class="navigation">
+    <div class="toggle_class"></div>
+    <div class="div_navigation">
+        <ul class="ul_navigation">
+            <li class="li_navigation"><a href="{% url 'home_page' %}">Главная страница</a></li>
+            <li class="li_navigation"><a href="{% url 'all_for_home_page' %}">Всё для дома</a></li>
+            <li class="li_navigation"><a href="{% url 'for_comp_page' %}">Компьютерные аксессуары</a></li>
+            <li class="li_navigation"><a href="{% url 'for_comp_mouse_page' %}">Коврики для мыши</a></li>
+            <li class="li_navigation"><a href="{% url 'all_for_kitchen_page' %}">Всё для кухни</a></li>
+            <li class="li_navigation"><a href="{% url 'beauty_and_health_page' %}">Красота и здоровье</a></li>
+            <li class="li_navigation"><a href="{% url 'autotovars_page' %}">Автотовары</a></li>
+            <li class="li_navigation"><a href="{% url 'all_for_building_page' %}">Всё для строительства и ремонта</a></li>
+            <li class="li_navigation"><a href="{% url 'velotovars_page' %}">Велотовары</a></li>
+            <li class="li_navigation"><a href="{% url 'electro_a_page' %}">Электронные и телефонные аксессуары</a></li>
+            <li class="li_navigation"><a href="{% url 'b_y_tovars_page' %}">Б/у техника и товары</a></li>
+            <li class="li_navigation"><a href="{% url 'ostalnoe_page' %}">Остальное</a></li>
+        </ul>
+    </div>
+    <ul class="menu_ul_word">
+        <li class="menu_word_li">М</li>
+        <li class="menu_word_li">Е</li>
+        <li class="menu_word_li">Н</li>
+        <li class="menu_word_li">Ю</li>
+    </ul>
+</nav>
+
+<footer class="footer_class">
+    <div class="toggle_num_telephone"></div>
+    <span class="viber_num_class">
+        <a href="viber://add?number=380634255120">
+        <img class="viber_logo_png_class" src="https://cdn-icons-png.flaticon.com/512/408/408771.png" alt="Viber">
+        <span class="num_viber">+380 63 42 55 120</span>
+        </a>
+    </span>
+</footer>
+    {% block content %}{% endblock %}
+
+<script>
+    var toggle = document.querySelector('.toggle_class')
+    var navigation = document.querySelector('.navigation')
+
+    toggle.onclick = function() {
+        var navigation = document.querySelector('.navigation');
+        if (document.querySelector('.all_tovars_div') != null) {
+            var all_tovars_div = document.querySelector('.all_tovars_div');
+            all_tovars_div.classList.toggle('all_tovars_open_menu');
+        }
+        if (document.querySelector('.block_title_class') != null) {
+            var title = document.querySelector('.block_title_class');
+            title.classList.toggle('all_title_class_active');
+        }
+        navigation.classList.toggle('active_navigation');
+
+        if (document.querySelector('.maindivtovar_detail') != null) {
+            var maindivtovar_detail = document.querySelector('.maindivtovar_detail');
+            maindivtovar_detail.classList.toggle('maindivtovar_detail_small');
+        }
+        if (document.querySelector('.buttons_div') != null) {
+            var buttons_div = document.querySelector('.buttons_div');
+            buttons_div.classList.toggle('buttons_div_small');
+        }
+    }
+
+    var toggle_viber = document.querySelector('.toggle_num_telephone')
+    toggle_viber.onclick = function() {
+        var telephone_window = document.querySelector('.footer_class');
+        telephone_window.classList.toggle('closed_telephone_window');
+    }
+</script>
+
+{% block script_content %}
+{% endblock %}
+</body>
+</html>

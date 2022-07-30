@@ -1,0 +1,66 @@
+{% extends 'main/main_file.html' %}
+
+{% block title_block %}Главная страница{% endblock %}
+
+{% block content %}
+    <div class="block_title_class">
+        <h1 class="title_of_page">Главная страница</h1>
+        <div class="new_tovars_word"><span class="word_new_span_class">Новинки!</span></div>
+    </div>
+    <div class="all_tovars_div">
+
+
+        {% for el in tovars_on_main_by %}
+        {% if el.tema == 'На Главную страницу' %}
+        <div class="maindivtovar">
+        <div class="divindivmagazinforlook">
+                <a href="{% url 'tovars_details' el.id %}">
+                <div class="divindivab divindivab2">
+
+                    <h3 id="titletovar" class="">{{ el.title }}</h3>
+              {% if el.price != "" and price_on_of.price_on_of == 'Включить цены' %}
+                    <h2 style="--grivn:'₴'" class="price_class">{{ el.price }}</h2>
+                {% else %}
+                    <h2 style="--grivn:''" class="price_class"></h2>
+                {% endif %}
+            <div class="all_tovars_div_img">
+                {% if tovars.photo_1 != "" %}
+                    <img src="{{ el.photo_1 }}">
+                {% endif %}
+        </div>
+
+                </div>
+                </a>
+              </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+    {% for el in tovars_on_main %}
+        <div class="maindivtovar">
+        <div class="divindivmagazinforlook">
+                <a href="{% url 'tovars_details' el.id %}">
+                <div class="divindivab divindivab2">
+
+                    <h3 class="">{{ el.title }}</h3>
+                {% if el.price != "" and price_on_of.price_on_of == 'Включить цены' %}
+                    <h2 style="--grivn:'₴'" class="price_class">{{ el.price }}</h2>
+                {% else %}
+                    <h2 style="--grivn:''" class="price_class"></h2>
+                {% endif %}
+            <div class="all_tovars_div_img">
+                {% if tovars.photo_1 != "" %}
+                    <img src="{{ el.photo_1 }}">
+                {% endif %}
+        </div>
+
+                </div>
+                </a>
+              </div>
+        </div>
+            {% endfor %}
+
+
+        </div>
+{% endblock %}

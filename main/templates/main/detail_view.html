@@ -1,0 +1,106 @@
+{% extends 'main/main_file.html' %}
+{% load static %}
+
+{% block title_block %}{{ tovars_on_main_by.title }}{% endblock %}
+
+
+{% block content %}
+<div class="maindivtovar_detail">
+<div class="divindivforlook_detail">
+
+        <div class="divindivab_detail">
+
+
+            <h1 id="title_detail" class="title_detail">{{ tovars_on_main_by.title }}</h1>
+            {% if tovars_on_main_by.price != "" and price_on_of.price_on_of == 'Включить цены' %}
+                    <h2 style="--grivn:'₴'" class="price_class">{{ tovars_on_main_by.price }}</h2>
+                {% else %}
+                    <h2 style="--grivn:''" class="price_class"></h2>
+                {% endif %}
+    <div class="div_for_images">
+        <div id="div_for_photos_id" class="div_for_photos">
+            {% if tovars_on_main_by.photo_1 != "" %}
+            <div class="div_photo_1">
+            <img id="photo_1" class="img_1_detail" src="{{ tovars_on_main_by.photo_1 }}">
+            </div>
+            {% endif %}
+            {% if tovars_on_main_by.photo_2 != "" %}
+            <div class="div_photo_2">
+        <img id="photo_2" class="img_1_detail" src="{{ tovars_on_main_by.photo_2 }}">
+        </div>
+            {% endif %}
+        {% if tovars_on_main_by.photo_3 != "" %}
+            <div class="div_photo_3">
+        <img id="photo_3" class="img_1_detail" src="{{ tovars_on_main_by.photo_3 }}">
+                </div>
+        {% endif %}
+
+            {% if tovars_on_main_by.photo_4 != "" %}
+            <div class="div_photo_4">
+        <img id="photo_4" class="img_1_detail" src="{{ tovars_on_main_by.photo_4 }}">
+                </div>
+        {% endif %}
+
+            {% if tovars_on_main_by.photo_5 != "" %}
+            <div class="div_photo_5">
+        <img id="photo_5" class="img_1_detail" src="{{ tovars_on_main_by.photo_5 }}">
+                </div>
+        {% endif %}
+
+            {% if tovars_on_main_by.photo_6 != "" %}
+            <div class="div_photo_6">
+        <img id="photo_6" class="img_1_detail" src="{{ tovars_on_main_by.photo_6 }}">
+                </div>
+        {% endif %}
+
+            {% if tovars_on_main_by.photo_7 != "" %}
+            <div class="div_photo_7">
+        <img id="photo_7" class="img_1_detail" src="{{ tovars_on_main_by.photo_7 }}">
+                </div>
+        {% endif %}
+
+            {% if tovars_on_main_by.photo_8 != "" %}
+            <div class="div_photo_8">
+        <img id="photo_8" class="img_1_detail" src="{{ tovars_on_main_by.photo_8 }}">
+                </div>
+        {% endif %}
+        </div>
+</div>
+
+            <p class="about_tovar">{{ tovars_on_main_by.about }}</p>
+        </div>
+
+      </div>
+</div>
+
+<div class="buttons_div">
+            <div id="button_right_id"></div>
+            <div id="button_left_id"></div>
+            </div>
+{% endblock %}
+
+{% block script_content %}
+{% if var_for_show == 'komp' %}
+<script src="{% static 'main/js/js_for_show_photos.js' %}"></script>
+{% else %}
+<script src="{% static 'main/js/js_for_show_photos_telephone.js' %}"></script>
+{% endif %}
+<script>
+    if (document.documentElement.clientWidth > 700) {
+        var $body = document.body,
+            $script_main = document.createElement('script');
+            $script_main.src = "{% static 'main/js/js_for_show_photos.js' %}";
+            $body.appendChild($script_main);
+    }
+    else if (document.documentElement.clientWidth <= 700) {
+        var $body = document.body,
+            $script_telephone = document.createElement('script');
+            $script_telephone.src = "{% static 'main/js/js_for_show_photos_telephone.js' %}";
+            $body.appendChild($script_telephone);
+    }
+</script>
+<script>
+    var navigation = document.querySelector('.navigation');
+    navigation.classList.toggle('active_navigation');
+</script>
+{% endblock %}
