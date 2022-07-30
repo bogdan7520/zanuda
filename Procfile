@@ -1,0 +1,1 @@
+web: gunicorn proektmagasindj.wsgi --log-file -
